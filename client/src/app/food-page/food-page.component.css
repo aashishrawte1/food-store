@@ -1,0 +1,35 @@
+.restaurant img{
+    width: 200px;
+    height: 100px;
+}
+
+.restaurant .btn{
+    background: #cf0810;
+    color: white;
+    padding: 10px 20px;
+    border: #ccc 5px solid;
+    border-radius: 50px;
+}
+
+.restaurant h3{
+    font-size:1rem
+}
+
+.restaurant p.no-display{
+    color: #4c4b4b;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+input, select{
+    height: 35px;
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 90%;
+    border-radius: 6px;
+    border-color: var(--danger);
+    padding: 15px;
+}
+

@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header ">
+        <h3 class="card-title font-weight-bold">Add new menu</h3>
+  
+        <div class="card-tools">
+          <a class="btn"  (click)="back()" data-toggle="tooltip" data-placement="top" title="Back to menu list"><i class="fas fa-hand-point-left"></i></a>
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+  
+      </div>
+  
+      <!-- /.card-header -->
+      <div class="card-body">
+  
+        <form [formGroup]="menuForm" >
+          <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">Food name<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" id="product_name" name="product_name"
+                  formControlName="product_name" placeholder="Enter product">
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+  
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+              <label for="">Category<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <select class="form-control" id="id_product_cat_fk" name="id_product_cat_fk"
+                formControlName="id_product_cat_fk" >
+                    <option class="text-capitalize" *ngFor="let cat of categories" value="{{cat.id_product_cat}}">{{cat.prod_category_name}}</option>
+                    
+                 </select>
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+
+            <div class="form-group col-sm-12 col-md-3 col-lg-3">
+                <label for="">Sub Category<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control" id="id_product_sub_cat_fk" name="id_product_sub_cat_fk"
+                    formControlName="id_product_sub_cat_fk">
+                        <option value="1">Pizza</option>
+                        <option value="2">Burger</option>
+                        <option value="3"> Sandwiches</option>
+                    </select>
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                <label for="">Restaurant<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control select2" id="id_supplier_fk" name="id_supplier_fk"
+                    formControlName="id_supplier_fk">
+                    <option *ngFor="let rest of restaurants" value="{{rest.id_supplier}}">{{rest.supplier_name}}</option>
+                    </select>
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                <label for="">Price<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" id="product_price" name="product_price"
+                    formControlName="product_price" placeholder="Enter price">
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                <label for="">Status<label class="red-text">*</label></label>
+                <div class="input-group mb-2">
+                    <select class="form-control select2" id="status" name="status"
+                    formControlName="status">
+                    <option value="0">Unpublish</option>
+                    <option value="1">Publish</option>
+                    </select>
+    
+                </div>
+                <!--Validation
+                     <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                        <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                      </div>-->
+              </div>
+  
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="">Description<label class="red-text">*</label></label>
+              <div class="input-group mb-2">
+                <textarea type="text" class="form-control" id="product_description" name="product_description"
+                  formControlName="product_description" rows="4" cols="50">
+                </textarea>
+  
+              </div>
+              <!--Validation
+                   <div *ngIf="f.fname.invalid && (f.fname.dirty || f.fname.touched)">
+                      <div *ngIf="f.fname.errors.required" class="alert alert-danger">First name is required</div>
+                    </div>-->
+            </div>
+
+             <div class="col-sm-12 col-md-6 col-lg-6">
+                <img class="p-2" [src]="selectedImage" height="150"> <br/>   
+                      <input #imageMenu type="file" accept="image/*" (change)="processImage(imageMenu)" formControlName="image"
+                        id="image" name="image">
+               </div>
+    
+          </div>
+           <span class="d-flex w-100 pl-2 pt-2">
+            <button class="btn btn-dark mr-3 ">
+               <p>Submit</p>
+              </button>
+            
+            <button class="btn btn-outline-dark" (click)="back()" >
+                 <p>Cancel</p>
+            </button>
+          </span>
+        </form>
+  
+        <!-- /.row -->
+      </div>
+    </div>
+    <!-- /.card -->
+  
+  </div>
+  

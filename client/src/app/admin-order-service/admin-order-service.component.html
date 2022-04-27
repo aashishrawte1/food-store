@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <!-- SELECT2 EXAMPLE -->
+  <div class="card card-default">
+    <div class="card-header ">
+      
+      <h6 class="card-title font-weight-bold">Order #{{reference}} from {{fname}} {{lname}}  </h6>
+
+      <div class="card-tools">
+        <a class="btn"  (click)="back()" data-toggle="tooltip" data-placement="top" title="Back to order list"><i class="fas fa-hand-point-left"></i></a>
+        </div>
+</div>
+
+    <!-- /.card-header -->
+    <div class="card-body px-5">
+      <div class="w-100 d-flex justify-content-between flex-row">
+        <span d-flex justify-content-between flex-column>
+          <div class="text-info font-weight-bold h6">Items</div>
+          <div>
+            <ul >
+            <li>{{products}}</li>
+          </ul>
+        </div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-success font-weight-bold h6">Total</div>
+          <div>{{total}}</div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-warning font-weight-bold h6">Date</div>
+          <div>createdAt</div>
+        </span>
+        <span d-flex justify-content-between flex-column>
+          <div class="text-danger font-weight-bold h6">Status</div>
+          <div class="py-3">
+           <span class="alert alert-pending" *ngIf="status < 1">Pending</span>
+            <span class="alert alert-processing" *ngIf="status == 1">Processing</span>
+            <span class="alert alert-info" *ngIf="status == 2">Dispatched</span>
+            <span class="alert alert-success" *ngIf="status == 3">Fulfilled</span>
+            <span class="alert alert-danger" *ngIf="status == 4">Cancelled</span>
+          </div>
+        </span>
+      </div>
+     
+
+      <!-- /.row -->
+    </div>
+  </div>
+  <!-- /.card -->
+
+  <!-- SELECT2 EXAMPLE -->
+  <div class="card card-default">
+   <!-- /.card-header -->
+    <div class="card-body px-5">
+      <form [formGroup]="orderForm">
+
+        <div class="row">
+          <div class="form-group col-sm-12 col-md-12">
+            <label for="">Update state</label>
+            <div class="input-group mb-2">
+              <select class="form-control" formControlName="order_state" name="order_state" id="order_state">
+                <option selected>Select state</option>
+                <option value="1">Processing</option>
+                <option value="2">Dispatch</option>
+                <option value="3">Fullfill</option>
+                <option value="4">Cancel</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-12 col-md-12">
+            <label for="">Comments</label>
+            <div class="input-group mb-2">
+              <textarea class="form-control" cols="50" rows="5" formControlName="comments" name="comments" id="comments"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <div class="col-sm-12">
+          
+          <button class="btn btn-dark"  (submit)="submit()">Update</button>
+          <button class="btn btn-light mr-2" >Cancel</button>
+        </div>
+      </form>
+     
+
+      <!-- /.row -->
+    </div>
+  </div>
+  <!-- /.card -->
+
+</div>
+
+
+

@@ -1,0 +1,47 @@
+#wrapper{
+    height:100%
+}
+
+.copyright{
+    
+    width: 100%;
+    background: #171616;
+    color: white;
+    height: 80px;
+    padding: 25px;
+    left: 0;
+    bottom: 0;
+    border-top:#f0002f 2px solid;
+}
+
+.logout{
+    cursor:pointer
+}
+
+.user-panel .info {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 5px 5px 10px;
+}
+
+.info p{
+    color: white;
+    font-weight:600;
+    letter-spacing: 0.2rem;
+
+}
+
+.info a{
+    margin-top: -20px;
+    font-size: 0.9rem;
+}
+
+.info a:hover{
+    cursor:pointer
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: var(--danger);
+    color: #fff;
+}
+

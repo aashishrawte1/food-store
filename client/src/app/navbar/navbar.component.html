@@ -1,0 +1,111 @@
+
+<!--End homepage-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light " data-toggle="collapse" data-target=".navbar-collapse.show">
+    <a class="navbar-brand" routerLink="/"><img src="../../assets/img/{{logo}}" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link"routerLink="/" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Home' | translate}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/restaurants" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Restaurants' | translate}}</a>
+        </li>
+
+        
+
+        <div class="dropdown-divider d-block d-lg-none"></div>
+
+        <li class="nav-item ">
+          <a class="nav-link d-block d-lg-none" routerLink="/customer/profile" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Account' | translate}}</a>
+            
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link d-block d-lg-none" routerLink="/customer/my-orders" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Cart' | translate}}</a>
+        </li>
+
+        <div class="d-block">
+          <button class="btn btn-dark d-lg-none w-50 rounded-0"><i class="fa fa-shopping-cart" routerLink="/cart" data-toggle="collapse" data-target=".navbar-collapse.show"></i>{{'HOME.ViewCart' | translate}}</button>
+          <button class="btn btn-danger d-lg-none w-50 rounded-0" routerLink="/checkout" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Checkout' | translate}} <i class="fa fa-arrow-circle-right"></i></button>
+        </div>
+
+        <button class="btn btn-danger d-block d-lg-none my-2 text-center" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</button>
+        <button class="btn btn-warning d-block d-lg-none" routerLink="/customer/register" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Register' | translate}}</button>
+
+       
+        
+      </ul>
+      <ul class="navbar-nav ml-auto icons">
+          <li class="dropdown d-none d-lg-block">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-2x fa-user" aria-hidden="true"><br><span>{{'HOME.Account' | translate}}</span></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/customer/profile/my-account" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyProfile' | translate}}</a>
+            <a class="dropdown-item" routerLink="/customer/profile/orders" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.MyOrders' | translate}}</a>
+            <div class="row">
+              <div class="col-sm-12 d-flex flex-xs-column flex-sm-column flex-md-column" *ngIf="!custAuthService.isLoggedIn()">
+                <a class="btn btn-outline-danger text-center my-2 mx-3" routerLink="/customer/login" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.SingIn' | translate}}</a>
+            <a class="btn btn-outline-dark text-center  mx-3" routerLink="/customer/register" data-toggle="collapse" data-target=".navbar-collapse.show">{{'HOME.Register' | translate}}</a>
+              </div>
+  
+            </div>
+          </div>
+          </li>
+          <li class="space"></li>
+          
+          <li class="dropdown d-none d-lg-block">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-shopping-cart" aria-hidden="true"> {{cartData.data[0].numInCart != 0 ? cartData.data.length : 0}} <br> <span>{{'HOME.Cart' | translate}}</span> </i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <button type="button" class="close border-0" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="no-item w-100 d-flex justify-content-center align-items-center flex-column" *ngIf="cartData.data[0].numInCart == 0">
+             <span><img src="../../assets/img/nothing_to_see.png" alt="" class="nothing-img"></span>
+              <span class="nothing-top-text mt-2 font-weight-bold">{{'HOME.NothingtoSee' | translate}}</span>
+              <span class="nothing-small-text">{{'HOME.AddItems' | translate}}</span>
+             <span><button class="btn btn-outline-danger border-radius-5 mt-2" routerLink="../restaurants">{{'HOME.ContinueShopping' | translate}}</button></span>
+            </div>
+
+            <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+              <div class="product-widget w-100 d-flex justify-content-between flex-row py-2" *ngFor="let c of cartData.data; let i=index">
+                <button class="btn border-0" (click)="cartService.DeleteProductFromCart(i)"  data-toggle="tooltip" data-placement="top" title="Delete item"><i class="fa fa-close"></i></button>
+
+                <div class="product-img mr-auto pl-5">
+                  <img src="../../assets/img/menu/{{c.product?.image}}" alt="" width="60px">
+                </div>
+                <div class="product-body mr-auto pl-5">
+                  <h3 class="product-name"><a routerLink="/products/{{c.product?.id_product}}">{{c.product?.product_name}}</a></h3>
+                  <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span>{{c.product?.product_price | currency:'CDF'}}</h4>
+              
+                </div>
+                
+              </div>
+              
+            </div>
+            <div class="cart-summary" *ngIf="cartData.data[0].numInCart !== 0">
+              <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} {{'HOME.SelectedItems' | translate}}</small>
+              <h5>TOTAL : {{cartTotal | currency:'CDF'}}</h5>
+            </div>
+            <div class="cart-btns " *ngIf="cartData.data[0].numInCart !== 0">
+              <a routerLink="/cart">{{'HOME.ViewCart' | translate}}</a>
+              <a  (click)="checkout()">{{'HOME.Checkout' | translate}} <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+             </div>
+          </li>
+          
+      </ul>
+    </div>
+  </nav>
+  <!--End homepage-->
+
+ 

@@ -1,0 +1,122 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
+<div class="col-sm-12">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="open-tab" data-toggle="tab" href="#open" role="tab" aria-controls="open"
+        aria-selected="true">{{'CUSTOMERPAGE.OpenOrders' | translate}}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="closed"
+        aria-selected="false">{{'CUSTOMERPAGE.ClosedOrders' | translate}}</a>
+    </li>
+
+    <li class="nav-item mr-auto">
+      <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+    </li>
+
+  </ul>
+  <div class="tab-content py-3" id="myTabContent">
+    <div class="tab-pane fade show active" id="open" role="tabpanel" aria-labelledby="open-tab">
+      <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Reference</th>
+            <th>Product(s)</th>
+            <th>Total</th>
+            <th>Payment mode</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="ordersOpen < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersOpen | paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true, id: 'first' }; let i=index">
+            <td class="font-weight-bold">{{order.order_reference}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="alert alert-pending" *ngIf="order.order_state < 1" >Pending</span>
+              <span class="alert alert-processing" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="alert alert-info" *ngIf="order.order_state == 2" >Dispatched</span>
+              
+              
+            </td>
+            <td>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order details" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View Invoice" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-file-pdf"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel Order" (click)="cancel(order.id_order_fk,order.order_reference)"><i class="fas fa-times"></i></a></span>
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event" id="first"></pagination-controls>
+      </div>
+    </div>
+    <!-- /.card-body Open orders -->
+    </div>
+
+
+    <div class="tab-pane fade" id="closed" role="tabpanel" aria-labelledby="closed-tab">
+            <!-- /.card-header Closed orders -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Order Reference</th>
+            <th>Product(s)</th>
+            <th>Total</th>
+            <th>Payment mode</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="ordersClosed < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersClosed | paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true, id: 'second' } ; let i=index">
+            <td class="font-weight-bold">{{order.order_reference}}</td>
+            <td>{{order.product_name}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="alert alert-danger" *ngIf="order.order_state == 4" >Cancelled</span>
+              <span class="alert alert-success" *ngIf="order.order_state == 3">Fulfilled</span>
+              
+            </td>
+            <td>
+              
+                <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order details" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+                <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View Invoice" routerLink="../order-details/{{order.id_order_fk}}"><i class="fas fa-file-pdf"></i></a></span>
+                
+            
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event" id="second"></pagination-controls>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    </div>
+  </div>
+</div>

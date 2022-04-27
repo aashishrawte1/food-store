@@ -1,0 +1,66 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title font-weight-bold">User Accounts</h3>
+
+      <div class="card-tools">
+        <span class="_button"> 
+          <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+          <a class="btn" routerLink="../create-user"  data-toggle="tooltip" data-placement="top" title="Add new account"><i class="fas fa-2x fa-plus-circle"></i></a>
+        </span>
+        
+        <ul class="pagination pagination-sm float-right">
+          <li class="page-item"><a class="page-link" href="#">«</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>User ID</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="users < 1">No users to display</tr>
+          <tr *ngFor="let user of users" >
+            <td class="text-capitalize">{{user.fname}} {{user.lname}}</td>
+            <td >{{user.username}}</td>
+            <td class="text-capitalize">{{user.email}}</td>
+            <td class="text-capitalize">{{user.roles}}</td>
+           <td >
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Deactivated" *ngIf="user.status < 1" ><i class="fa fa-times text-danger" ></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Activated" *ngIf="user.status > 0"  ><i class="fa fa-check text-success"></i></a>
+               
+            </td>
+            <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Reset</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>

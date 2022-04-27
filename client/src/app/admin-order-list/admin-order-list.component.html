@@ -1,0 +1,81 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
+<div class="card">
+    <div class="card-header w-100 d-flex flex-row justify-content-between">
+      <h3 class="card-title font-weight-bold">Orders</h3>
+      <!---Search field-->
+      <span class="w-75 d-flex flex-row justify-content-between ml-5">
+        <input type="text" name="" id="" class="form-control mr-2" placeholder="Search by Reference number..." [(ngModel)]="searchText" name="searchText">
+      <!--Search by state-->
+      <select name="" id="" class="form-control" [(ngModel)]="searchState" name="searchState">
+        <option selected value="">All states</option>
+        <option value="0">Pending</option>
+        <option value="1">Processing</option>
+        <option value="2">Dispatched</option>
+        <option value="3">Fulfilled</option>
+        <option value="4">Cancelled</option>
+      </select> 
+      <!--End Search by state-->
+      </span>
+      
+      <!---END Search field-->
+      <div class="card-tools ml-auto">
+        <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Delivery address</th>
+            <th>Total</th>
+            <th>Payment mode</th>
+            <th>Status</th>
+            
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="ordersOpen < 1">
+            <td class="text-center" colSpan="7">
+              No orders in list 
+            </td>
+          </tr>
+          <tr *ngFor="let order of ordersOpen | searchBy:{order_reference:
+            searchText}  | searchBy:{order_state:
+              searchState} | paginate: { itemsPerPage: 10, currentPage: p,totalItems: count, autoHide: true } ; let i=index"> 
+            
+            <td>{{order.order_reference}}</td>
+            <td>{{order.fname}} {{order.lname}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.total | currency:'CDF':'code'}}</td>
+            <td>{{order.payment_name}}</td>
+            <td >
+              <span class="text text-pending" *ngIf="order.order_state < 1" >New order</span>
+              <span class="text text-processing" *ngIf="order.order_state == 1" >Processing</span>
+              <span class="text text-info" *ngIf="order.order_state == 2" >Dispatched</span>
+              <span class="text text-success" *ngIf="order.order_state == 3">Fulfilled</span>
+              <span class="text text-danger" *ngIf="order.order_state == 4">Cancelled</span>
+            </td>
+        
+            <td>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="View order" routerLink="../orders/order-details/{{order.id_order_fk}}"><i class="fas fa-search"></i></a></span>
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel order" (click)="cancel(order.id_order_fk)"><i class="fas fa-close"></i></a></span>   
+              <span><a class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Cancel order" (click)="cancel(order.id_order_fk)"><i class="fas fa-close"></i></a></span>   
+              
+            </td>
+          </tr>
+
+          
+        </tbody> 
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s12 text-left paginate">
+        <pagination-controls class="pagination" (pageChange)="p= $event"></pagination-controls>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>

@@ -1,0 +1,180 @@
+{
+  "TOP": {
+    "Order": "Order on:",
+    "SingIn": "Sign in",
+    "SignOut": "Sign out"
+  },
+  "HOME": {
+    "Home": "Home",
+    "Restaurants": "Restaurants",
+    "Drinks": "Drinks & Beverages",
+    "Contact": "Contact us",
+    "About": "About us",
+    "Account": "My Account",
+    "Cart": "View Cart",
+    "MyProfile": "My Profile",
+    "MyOrders": "My Orders",
+    "Register": "Sign up",
+    "SingIn": "Sign in",
+    "ViewCart": "View cart",
+    "Admin": "Administrator",
+    "Checkout": "Checkout",
+    "SelectedItems": "Selected item(s)",
+    "Total": "Total",
+    "Help": "Help",
+    "NothingtoSee":"Nothing to see here!",
+    "AddItems":"Add items to your cart and then find them here.",
+    "ContinueShopping":"Continue Shopping"
+  },
+  "HEADER": {
+    "Intro": "Fresh, rapid and delicious",
+    "Description": "In our restaurants we offer delicious food and quality services, we invite you to try our services. ",
+    "ViewButton": "View our restaurants"
+  },
+  "RESTAURANT": {
+    "Heading": "Choose your taste",
+    "Heading2": "Restaurant",
+    "NewBadge": "New",
+    "Open": "Opening at",
+    "Close":"Closing at",
+    "ViewButton": "View our menu",
+    "SearchBar": "Find your favorite restaurant..."
+  },
+  "FEATUREDMENU": {
+    "Heading": "Featured Menu",
+    "Category": "Category",
+    "Subcategory": "Sub category",
+    "AddToCart": "Add to cart",
+    "NoStock": "No stocks"
+  },
+  "CUSTOMERSASSURANCE": {
+    "BestQuality": "Better quality",
+    "OnTime": "On time",
+    "MasterChefs": "Masterchefs",
+    "TastyFood": "Tasty food"
+  },
+  "FOOTER": {
+    "Telephone": "Telephone",
+    "PaymentMode": "Modes of payements",
+    "JoinUs": "Join us"
+  },
+  "COPYRIGHT": {
+    "AllRights": ""
+  },
+  "LOGIN": {
+    "Login": "Sign in",
+    "PromptMsg": "Enter your login credentials",
+    "Rememberme": "Remember me",
+    "Forgot": "Forgot your password?",
+    "Email": "Email",
+    "Password": "Password",
+    "EnterEmail": "Enter your Email (example@email.com)",
+    "EnterPassword": "Enter the passord",
+    "EmailRequired": "Email is required",
+    "InvalidEmail":"Invalid Email format *example@email.com",
+    "PasswordRequired":"Password is required",
+    "Register": "Sign up",
+    "Google": "Sign in with Google",
+    "Welcome": "Welcome",
+    "WelcomeP":"Access more customer features.",
+    "WelcomeLogin": "Welcome Back!",
+    "WelcomeLoginP":"Kindly sign in to access your customer features."
+  },
+  "REGISTER": {
+    "CreateAccount": "Create an account",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "Email": "Email",
+    "Phone": "Phone(Optional) ",
+    "Dob": "Date of birth",
+    "Password": "Password",
+    "CPassword": "Confirmation password",
+    "EnterFname": "Enter your first name",
+    "EnterLname": "Enter your last name",
+    "EnterPhone": "Enter your phone number",
+    "EnterEmail": "Enter your email (example@email.com)",
+    "EnterPassword": "Enter the password",
+    "EnterCPassword": "Enter the confirmation password",
+    "AlreadyAccount": "Already have an account?",
+    "Submit": "Submit",
+    "Submitted": "Submitting"
+    
+  },
+
+  "PRODUCT":{
+
+  },
+
+  "CART":{
+  "Heading":"Shopping cart",
+  "CartContents": "Shopping cart content",
+  "Image":"Image",
+  "Title": "Title",
+  "Price":"Price/Unit",
+  "Quantity":"Quantity",
+  "Subtotal":"Subtotal",
+  "Total":"Total",
+  "Continue":"Continue shopping",
+  "CheckOut":"Checkout",
+  "EmptyCart":"The shopping cart is empty"
+  },
+  "CHECKOUT":{
+    "Heading":"Checkout",
+    "Billing":"Billing address",
+    "YourOrder":"Your order summary",
+    "Product":"Product(s)",
+  "Total":"Total",
+    "PlaceOrder":"Place order",
+    "Continue":"Continue shopping",
+  "ShoppingCart":"Shopping cart",
+  "Payment":"Payment options",
+  "EmptyCart":"The shopping cart is empty",
+  "TermStatement":"I have read and understand the",
+  "TermsLink":"terms and conditions",
+  "Booking":"Booking order",
+  "Submit":"Submit"
+  },
+
+  "CUSTOMERPAGE": {
+    "MyAccount": "My Account",
+    "Orders": "Order(s)",
+    "Details": "Details",
+    "Address": "Address",
+    "AddressBook": "Address Book",
+    "ChangePword": "Change Password",
+    "AccountOver": "Account Overview",
+    "AccountDets": "Account Details",
+    "DefaultAdd": "Your default delivery address ",
+    "OpenOrders": "Open orders",
+    "ClosedOrders": "Closed orders",
+    "OrderNumber": "Order reference",
+    "SeeDetails": "See the details",
+    "Delivered": "Delivered",
+    "Cancelled": "Cancelled",
+    "Pending": "Pending",
+    "ReadyBy": "Ready in:",
+    "NoDisplay": "No items to display",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "Email": "Email",
+    "Phone": "Phone(Optional) ",
+    "EnterFname": "Enter first name",
+    "EnterLname": "Enter last name",
+    "EnterPhone": "Enter your phone number",
+    "EnterEmail": "Enter your email",
+    "Submit": "Submit",
+    "Reset": "Reset",
+    "SetDefaultAdd": "Set as default address",
+    "DefaultAddress": "Default address",
+    "AddNewAddress": "Add new address",
+    "CPassword": "Current password",
+    "NPassword": "New password",
+    "RPassword": "Retype new password",
+    "SignOut": "Sign out "
+  },
+  "PNF": {
+    "Error": "404 Error - Page Not Found",
+    "Message": "We're sorry, the page you requested could not be found. Please return to the home page or contact support at support@maungano.com",
+    "Button": "Home page"
+  }
+}

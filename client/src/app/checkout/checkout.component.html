@@ -1,0 +1,118 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white; font-size:20px;  margin-top:50px">{{'CHECKOUT.Booking' | translate }}</p> </ngx-spinner>
+<div class="container">
+  <!--When the cart is empty-->
+  <div class="row" *ngIf="cartData.total == 0">
+    <div class="col-sm-12 text-center my-5">
+      <div class="">
+        <h4>
+          {{'CHECKOUT.EmptyCart' | translate }}
+        </h4>
+        <button class="btn btn-outline-danger" routerLink="/">
+          <i class="fa fa-arrow-circle-o-left"> {{'CHECKOUT.Continue' | translate }}</i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3 " *ngIf="cartData.total > 0">
+    <div class="col-sm-12 text-center my-5 ">
+      <h1>
+        {{'CHECKOUT.Heading' | translate }}
+      </h1>
+
+
+    </div>
+  
+    <div class="col-sm-7 p-3 mx-2 border-light rounded bg-light border-secondary">
+      <span class="d-flex w-100 justify-content-between flex-sm-column flex-md-row flex-lg-row">
+        <h5 class="font-weight-bold w-25">Shipping Details</h5>
+        <hr class="w-75">
+      </span>
+
+      <span class=" py-3 d-flex w-100 justify-content-between flex-column">
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row text-capitalize "><h6 class="font-weight-bold pr-2 ">Name:</h6>{{fname}} {{lname}}</span>
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row "><h6 class="font-weight-bold pr-2">Phone: </h6> {{primaryPhone}} <span>/{{secondaryPhone}} <span *ngIf="!primaryPhone"> <a routerLink="../customer/profile">Update phone details</a></span></span></span>
+       <span class=" d-flex w-100 justify-content-start flex-sm-column flex-md-row flex-lg-row text-capitalize "><h6 class="font-weight-bold pr-2">Delivery Address:</h6> </span>
+      <span *ngIf="_address">{{_address}}</span><span *ngIf="!_address"> <a routerLink="../customer/profile">Update address details</a></span></span>
+
+      <span class="d-flex w-100 justify-content-between flex-sm-column flex-md-row flex-lg-row">
+        <h6 class="font-weight-bold w-50">Information to accompany the order</h6>
+        <hr class="w-50">
+      </span>
+      
+    </div>
+
+    <div class="col-sm-4 p-3  border-light rounded bg-light border border-secondary">
+      <h5 class="font-weight-bold">{{'CHECKOUT.YourOrder' | translate }}</h5>
+
+      <div col-sm-12 text-center>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{'CHECKOUT.Product' | translate }}</th>
+              <th>{{'CHECKOUT.Total' | translate }}</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of cartData.data">
+              <td class="">
+                {{c.numInCart}} x {{c.product.product_name}}
+              </td>
+              <td>
+                {{c.product.product_price * c.numInCart | currency: 'CDF'}}
+              </td>
+
+            </tr>
+            <tr>
+              <td class="total-hd">Total</td>
+              <td class="total-qty">{{cartTotal | currency: 'CDF'}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!-- Form starts -->
+        <form [formGroup]="checkoutForm" (ngSubmit)="onCheckout()">
+          <!-- Gender -->
+          <div class="group-gap">
+            <h5 class="mb-3">{{'CHECKOUT.Payment' | translate}}</h5>
+
+            <div class="d-block my-3">
+              <div class="" *ngFor="let py of modes">
+                <input class="form-input" type="radio" formControlName="payment" [value]="py.id_payment"
+                  id="{{py.payment_name}}" (change)="paymentChange()" [disabled]="py.status < 1"> <small class="">
+                  {{py.payment_name}} </small> <span >(Service not active)</span>
+
+              </div>
+            </div>
+
+            <div class="terms">
+              <input class="checkbox" type="checkbox" name="terms" id="terms" formControlName="terms" (change)="paymentChange()"> <small> {{'CHECKOUT.TermStatement' | translate}} <a routerLink="/customer/terms">{{'CHECKOUT.TermsLink' | translate}}</a> </small>
+            </div>
+
+            <input type="text" name="total" id="total" formControlName="total" hidden>
+
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="place-order text-center">
+            <button class="btn btn-danger btn-block" [disabled] ="!radio_state">{{'CHECKOUT.PlaceOrder' | translate}}</button>
+          </div>
+        </form><!-- Form ends -->
+
+      </div>
+
+
+    </div>
+    <div class="col-sm-12 ml-auto mr-auto d-flex py-5 nav-btn">
+      <div class="d-flex flex-sm-column flex-md-row w-100 ">
+        <button class="btn btn-dark btn-sm order-0 mx-2" routerLink="/restaurants"><i class="fa fa-home"></i> {{'CHECKOUT.Continue' | translate}}</button>
+        <button class="btn btn-secondary btn-sm order-1" routerLink="/cart"><i class="fa fa-shopping-cart"></i> {{'CHECKOUT.ShoppingCart' | translate}}</button>
+        
+      </div>
+
+    </div>
+  </div>
+</div>

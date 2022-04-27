@@ -1,0 +1,71 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "yellow" type = "ball-clip-rotate-multiple" [fullScreen] = "false"><p style="color: white; font-size:20px;  margin-top:50px">loading...</p> </ngx-spinner>
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title font-weight-bold">Menu</h3>
+
+      <div class="card-tools">
+        <span class="_button"> 
+          <a class="btn" (click)="refresh()" data-toggle="tooltip" data-placement="top" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+          <a class="btn" routerLink="../create"  data-toggle="tooltip" data-placement="top" title="Add new menu"><i class="fas fa-2x fa-plus-circle"></i></a>
+        </span>
+        
+        <ul class="pagination pagination-sm float-right">
+          <li class="page-item"><a class="page-link" href="#">«</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Item name</th>
+            <th >Category</th>
+            <th>Sub Category</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center no-display" *ngIf="menuItems < 1">No items to display</tr>
+          <tr *ngFor="let _menu of menuItems; let i=index">
+            <td>{{i+1}}</td>
+            <td class="image"><img class="rounded-circle"  src="../../assets/img/menu/{{_menu.image}}" alt="" width="50px" height="50px"></td>
+            <td class="text-capitalize">{{_menu.product_name}}</td>
+            <td class="text-capitalize">{{_menu.category}}</td>
+            <td>{{_menu.subcategory}}</td>
+            <td>{{_menu.product_description}}</td>
+            <td>{{_menu.quantity}}</td>
+            <td >
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Unpublish" *ngIf="_menu.status>0"><i class="fa fa-check text-success" ></i></a>
+              <a class="btn"  data-toggle="tooltip" data-placement="top" title="Publish" *ngIf="_menu.status<1"><i class="fa fa-times text-danger"></i></a>
+               
+            </td>
+            <td>
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select action
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit</a>
+                  <a class="dropdown-item" href="#">Delete</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>

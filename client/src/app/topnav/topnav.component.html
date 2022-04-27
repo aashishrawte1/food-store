@@ -1,0 +1,34 @@
+
+<div class="container-fluid top">
+  <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100 ">
+    <span class="order-0">
+      <p>{{'TOP.Order' | translate}}: {{phone}} </p>
+    </span>
+    <span class="d-block order-1">
+     <!-- <span class="mx-2">
+        <select #currencySelect (change)="selectCurrency(currencySelect.value)">
+          <option *ngFor="let _curr of currency" [value]="_curr.id_currency">{{_curr.iso_code}}</option>
+          
+        </select>
+      </span> -->
+      <span class="mx-2">
+        <select #langselect (change)="translate.use(langselect.value)">
+          <option *ngFor="let _lang of translate.getLangs()" [value]="_lang" [selected]="_lang[0]"> <img alt="flag"> {{_lang}}</option>
+        </select>
+
+      </span>
+      <span class="_sign_in mx-2">
+        <span *ngIf="!this.custAuthService.isLoggedIn()" class="order-1"><a
+            routerLink="/customer/login">{{'TOP.SingIn' | translate}}</a> </span>
+        <span *ngIf="this.custAuthService.isLoggedIn()" class="order-1"><a
+            (click)="customerLogout()">{{'TOP.SignOut' | translate}} ({{fname}})</a> </span>
+      </span>
+
+
+
+    </span>
+
+  </div>
+
+
+</div>

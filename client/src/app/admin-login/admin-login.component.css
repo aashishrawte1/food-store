@@ -1,0 +1,10 @@
+.loginForm{
+    background-color: #dc3545;
+}
+.card{
+    width: 360px;
+}
+
+.errorMsg{
+    font-size: .95rem;
+}

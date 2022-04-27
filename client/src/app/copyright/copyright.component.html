@@ -1,0 +1,51 @@
+<div class="container-fluid ">
+  <div class="row footer">
+
+    <div class="col-sm-12">
+      <div class="social-footer footer-right">
+        <div class="socials" *ngFor="let _social of social ">
+          <a href="{{_social.social_url}}" class="social-link">
+            <span class="fa {{_social.social_fa_class}}"><span
+              class="hidden">hidden</span></span>
+          </a>
+        </div>
+    
+
+        <div class="logo">
+          <a routerLink="/"><img src="../../assets/img/{{logo}}" alt=""></a>
+        </div>
+
+        <div class="col-md-12 col-sm-12 menu-footer footer-center">
+          <ul class="menu">
+            <li class="menu-item"><span>{{store_name}}, {{city}}, {{country}}</span></li>
+            <li class="menu-item"><span>Telephone: {{phone}}</span></li>
+            <li class="menu-item"><span>{{email}}</span></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12 text-center py-2">
+          <img src="../../assets/img/payments.png" alt="" width="200px">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row copyright">
+    <div class=" d-flex justify-content-between w-100 flex-xs-column flex-sm-column flex-md-row flex-lg-row">
+      <div class="copyright-msg">
+        Copyright@2020 - {{_year}}. All rights reserved.
+
+      </div>
+      <div>
+        <span class="copyright-msg"><a routerLink="">Privacy</a></span>
+        <span class="copyright-msg"><a routerLink="">Terms</a></span>
+        <span class="copyright-msg"><a routerLink="/admin" target="_blank">Admin</a></span>
+      </div>
+
+      <span class="designed-by">
+        Developed and Designed by <a href="https://github.com/SGGaita/food-Ecommerce-Web-App">Steve Gaita</a> </span>
+    </div>
+  </div>
+</div>

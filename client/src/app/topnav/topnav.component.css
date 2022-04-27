@@ -1,0 +1,27 @@
+.top{
+    height:30px;
+    background-color:#cf0810;
+    color: #fff;
+   
+}
+
+.top p{
+    padding:5px 10px;
+    background-color: #cf0810;
+    font-weight: 500;
+}
+
+ a{
+    color:#fff !important;
+    text-decoration: none ;
+    text-transform: capitalize;
+}
+
+a:hover{
+    color:#fff !important;
+    text-decoration: none ;
+}
+
+._sign_in{
+    cursor: pointer;
+}
